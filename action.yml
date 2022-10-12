@@ -20,5 +20,5 @@ inputs:
     description: 'Whether the action should log the input and output content'
     default: false
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
