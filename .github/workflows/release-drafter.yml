@@ -28,7 +28,7 @@ jobs:
           export DEBUG=api
           set -x
 
-          git checkout --branch next-release
+          git checkout -b next-release
           npm run prepare
           git config user.name github-actions
           git config user.email github-actions@github.com
