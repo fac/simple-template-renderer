@@ -2,20 +2,8 @@ name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 template: |
   ## $RESOLVED_VERSION
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
 
-  <!--
-    add the details of your change's expected plan output here
-    if there's anything you want to call out from your change
-    remove the details otherwise!
-  -->
-  <details><summary>EXPECTED PLAN</summary><p>
-
-  ```
-  ```
-  </p>
-  </details>
-
-  **Full Changelog**: https://github.com/fac/infrastructure-modules/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
 
   ## CHANGES
 
