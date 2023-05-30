@@ -1,0 +1,63 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+template: |
+  ## $RESOLVED_VERSION
+
+  <!--
+    add the details of your change's expected plan output here
+    if there's anything you want to call out from your change
+    remove the details otherwise!
+  -->
+  <details><summary>EXPECTED PLAN</summary><p>
+
+  ```
+  ```
+  </p>
+  </details>
+
+  **Full Changelog**: https://github.com/fac/infrastructure-modules/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+
+  ## CHANGES
+
+  $CHANGES
+
+change-template: '* $TITLE by @$AUTHOR (#$NUMBER)'
+categories:
+  - title: 'BREAKING CHANGES'
+    labels:
+      - 'breaking-changes'
+  - title: 'BUGFIX'
+    labels:
+      - 'bugfix'
+  - title: 'ENHANCEMENTS'
+    labels:
+      - 'enhancement'
+  - title: 'FEATURE'
+    labels:
+      - 'feature'
+version-resolver:
+  major:
+    labels:
+      - 'breaking-changes'
+      - 'major'
+  minor:
+    labels:
+      - 'enhancement'
+      - 'feature'
+      - 'minor'
+  patch:
+    labels:
+      - 'bugfix'
+      - 'patch'
+  default: patch
+exclude-labels:
+  - 'skip-changelog'
+autolabeler:
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+    title:
+      - '/fix/i'
+  - label: 'enhancement'
+    branch:
+      - '/feature\/.+/'
