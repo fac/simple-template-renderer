@@ -1,8 +1,8 @@
 # Simple template file renderer
 
-![units-test](https://github.com/NicoG60/simple-template-renderer/workflows/units-test/badge.svg)
+![units-test](https://github.com/fac/simple-template-renderer/workflows/units-test/badge.svg)
 
-## TL;DR Usage
+## Usage
 
 Let's say you have the following text file
 ```
@@ -11,7 +11,7 @@ Hello ${MY_NAME}!
 
 You can use
 ```yaml
-uses: NicoG60/simple-template-renderer@v1
+uses: fac/simple-template-renderer@v1
 with:
   input: my/**/file*.txt
   output: destination/directory
@@ -24,10 +24,10 @@ in `destination/directory/file.txt` you'll get
 Hello John Doe!
 ```
 
-## Complete usage
+## More complete usage
 
 ```yaml
-uses: NicoG60/simple-template-renderer@v1
+uses: fac/simple-template-renderer@v1
 with:
   input: my/**/file*.txt        # - Input file path, or glob. Required.   
   output: destination           # - Output directory. Optional.

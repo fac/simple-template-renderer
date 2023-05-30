@@ -22,21 +22,29 @@ jobs:
         with:
           node-version: 16
           cache: npm
-      - run: |
+
+      - name: Compile action with dependencies
+        run: |
+          npm ci
+          npm run prepare
+
+      - name: Update draft release to point to compiled files
+        env:
+         GH_TOKEN: ${{ github.token }}
+        run: |
           exec 19> >( sed -e's/^/::debug::/g' )
           BASH_XTRACEFD=19
           export DEBUG=api
           set -x
 
-          git checkout --branch next-release
-          npm run prepare
+          git checkout -b next-release
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add dist/
-          git commit -m 'Build for ${{ steps.release-draft.outputs.tag-name }}'
+          git commit -m 'Build for ${{ steps.release-draft.outputs.tag_name }}'
           git push origin HEAD --force
 
-          RELEASE_URL="repos/${{ github.repository }}/releases/${{ steps.release-draft.outputs.release-id }}"
+          RELEASE_URL="repos/${{ github.repository }}/releases/${{ steps.release-draft.outputs.id }}"
           gh api -X PATCH "$RELEASE_URL" 2>&19 \
             --field tag_name="$( gh api "$RELEASE_URL" --jq .tag_name 2>&19 )" \
             --field target_commitish=next-release
